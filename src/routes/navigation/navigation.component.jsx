@@ -11,10 +11,13 @@ const Navigation = () => {
         <Link to="/" className="logo-container">
           <CrwnSVG className="logo" />
         </Link>
-        <nav className="nav-links-container">
-          <ul>
+        <nav>
+          <ul className="nav-links-container">
             <li className="nav-link">
               <Link to="/shop">Shop</Link>
+            </li>
+            <li className="nav-link">
+              <Link to="/sign-in">Sign In</Link>
             </li>
           </ul>
         </nav>
