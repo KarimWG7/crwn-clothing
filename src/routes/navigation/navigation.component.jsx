@@ -17,7 +17,7 @@ const Navigation = () => {
               <Link to="/shop">Shop</Link>
             </li>
             <li className="nav-link">
-              <Link to="/sign-in">Sign In</Link>
+              <Link to="/auth">Sign In</Link>
             </li>
           </ul>
         </nav>

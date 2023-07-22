@@ -20,6 +20,11 @@ function SignUpForm() {
   const [formFeilds, setFormFeilds] = useState(defaultFormFeilds);
   const { displayName, email, password, confirmPassword } = formFeilds;
 
+
+  const resetFormFeilds = () => {
+    setFormFeilds(defaultFormFeilds);
+  };
+
   const onChangeHandler = (e) => {
     const { name, value } = e.target;
 
@@ -40,6 +45,7 @@ function SignUpForm() {
       const userDocRef = await createUserDocumentFromAuth(user, {
         displayName,
       });
+      resetFormFeilds();
       console.log(userDocRef);
     } catch (err) {
       console.error(err.message);
@@ -53,7 +59,6 @@ function SignUpForm() {
         <FormInput
           label="Display Name"
           type="text"
-          id="name"
           name="displayName"
           value={displayName}
           onChange={onChangeHandler}
@@ -62,7 +67,6 @@ function SignUpForm() {
         <FormInput
           label="Email"
           type="email"
-          id="email"
           required
           name="email"
           value={email}
@@ -72,7 +76,6 @@ function SignUpForm() {
         <FormInput
           label="Password"
           type="password"
-          id="password"
           required
           name="password"
           value={password}
@@ -83,7 +86,6 @@ function SignUpForm() {
         <FormInput
           label="Confirm Password"
           type="password"
-          id="confirm-password"
           required
           name="confirmPassword"
           value={confirmPassword}
