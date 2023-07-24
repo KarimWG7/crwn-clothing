@@ -1,11 +1,12 @@
 import React, { useState } from "react";
+
+import FormInput from "../../components/form-input/form-input.component";
+import Button from "../../components/button/button.component";
+
 import {
   signInWithGooglePopup,
-  createUserDocumentFromAuth,
   signInWithGoogleEmailAndPassword as signInWithEmailAndPassword,
 } from "../../utils/firebase/firebase.utils";
-import Button from "../../components/button/button.component";
-import FormInput from "../../components/form-input/form-input.component";
 
 import "./sign-in-form.styles.scss";
 
@@ -32,11 +33,12 @@ function SignInForm() {
   //managing signing in with google
   const signInWithGoogle = async () => {
     try {
-      const { user } = await signInWithGooglePopup();
-      await createUserDocumentFromAuth(user);
+      await signInWithGooglePopup();
     } catch (err) {
       if (err.code === "auth/cancelled-popup-request") {
         alert("You Closed The Sign In Popup Without Signing In!");
+      } else if (err.code === "auth/network-request-failed") {
+        alert("Network Error! Please check you internet connection.");
       } else {
         console.error("Error while logging in", err);
       }
@@ -47,8 +49,7 @@ function SignInForm() {
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      const { user } = await signInWithEmailAndPassword(email, password);
-      console.log(user);
+      await signInWithEmailAndPassword(email, password);
       resetFormFeilds();
     } catch (err) {
       switch (err.code) {
@@ -57,6 +58,9 @@ function SignInForm() {
           break;
         case "auth/user-not-found":
           alert("No User found with this email address.");
+          break;
+        case "auth/network-request-failed":
+          alert("Network Error! Please check you internet connection.");
           break;
         default:
           console.log(err);
