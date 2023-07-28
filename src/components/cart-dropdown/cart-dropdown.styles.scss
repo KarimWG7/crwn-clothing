@@ -5,23 +5,29 @@
   display: flex;
   flex-direction: column;
   padding: 20px;
-  border: 1px solid black;
+  border: 1px solid rgb(138, 138, 138);
   background-color: white;
   top: 90px;
   right: 40px;
   z-index: 5;
   border-radius: 15px;
-
+  
   .empty-message {
     font-size: 18px;
     margin: 50px auto;
   }
-
+  
   .cart-items {
     height: 240px;
     display: flex;
     flex-direction: column;
+    scrollbar-width: thin;
+    overflow-y: scroll;
   }
+  .cart-items::-webkit-scrollbar {
+    display:none ;
+  }
+
 
   button {
     margin-top: auto;

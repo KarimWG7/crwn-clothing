@@ -13,7 +13,7 @@ import CartDropdown from "../../components/cart-dropdown/cart-dropdown.component
 
 const Navigation = () => {
   const { currentUser } = useContext(userContext);
-  const { cart} = useContext(cartContext);
+  const { isCartOpen } = useContext(cartContext);
 
   const signOutHandler = async () => {
     await signOutUser();
@@ -40,10 +40,10 @@ const Navigation = () => {
               </li>
             )}
             <li className="nav-link">
-              <CartIcon/>
+              <CartIcon />
             </li>
           </ul>
-          {cart.isDropped && <CartDropdown />}
+          {isCartOpen && <CartDropdown />}
         </nav>
       </header>
       <Outlet />
