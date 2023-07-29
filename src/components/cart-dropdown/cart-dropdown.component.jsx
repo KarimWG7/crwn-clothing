@@ -9,7 +9,7 @@ import CartItem from "../cart-item/cart-item.component";
 function CartDropdown() {
   const { cartItems } = useContext(cartContext);
   const navigate = useNavigate();
-  const checkoutClickHandler = () => {
+  const goToCheckoutHandler = () => {
     navigate("/checkout");
   };
 
@@ -24,7 +24,7 @@ function CartDropdown() {
           <p className="empty-message">No Items Found</p>
         )}
       </div>
-      <Button onClick={checkoutClickHandler}>Go To Checkout</Button>
+      <Button onClick={goToCheckoutHandler}>Go To Checkout</Button>
     </div>
   );
 }
