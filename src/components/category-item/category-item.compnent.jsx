@@ -1,7 +1,8 @@
 import React from "react";
 import "./category-item.styles.scss";
+import { Link } from "react-router-dom";
 
-function Category({ category }) {
+function CategoryItem({ category }) {
   return (
     <div className="category-container">
       <div
@@ -9,11 +10,13 @@ function Category({ category }) {
         style={{ backgroundImage: `url(${category.imageUrl})` }}
       />
       <div className="category-body-container">
-        <h2>{category.title}</h2>
-        <p>Shop Now</p>
+        <Link to={`/shop/${category.title.toLowerCase()}`}>
+          <h2>{category.title}</h2>
+          <p>Shop Now</p>
+        </Link>
       </div>
     </div>
   );
 }
 
-export default Category;
+export default CategoryItem;
