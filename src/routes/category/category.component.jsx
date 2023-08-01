@@ -8,8 +8,8 @@ import ProductCard from "../../components/product-card/product-card.component";
 
 const Category = () => {
   const { category } = useParams();
-  const [products, setProducts] = useState(categoriesMap[category]);
   const { categoriesMap } = useContext(CategoriesContext);
+  const [products, setProducts] = useState(categoriesMap[category]);
 
   useEffect(() => {
     const productsArr = categoriesMap[category];
