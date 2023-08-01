@@ -21,7 +21,7 @@ function CartDropdown() {
             <CartItem key={cartItem.id} product={cartItem} />
           ))
         ) : (
-          <p className="empty-message">No Items Found</p>
+          <span className="empty-message">Your cart is empyt</span>
         )}
       </div>
       <Button onClick={goToCheckoutHandler}>Go To Checkout</Button>

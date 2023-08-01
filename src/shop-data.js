@@ -109,6 +109,7 @@ const SHOP_DATA = {
 
   jackets: [
     {
+      id: 18, 
       name: "Black Jean Shearling",
       imageUrl: "https://i.ibb.co/XzcwL5s/black-shearling.png",
       price: 125,

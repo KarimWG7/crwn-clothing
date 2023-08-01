@@ -47,7 +47,6 @@ function SignUpForm() {
         displayName,
       });
       resetFormFeilds();
-      console.log(userDocRef);
     } catch (err) {
       console.error(err.message);
     }

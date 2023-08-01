@@ -7,3 +7,17 @@ h2 {
     margin: 10px 0;
 }
 }
+@media (max-width: 985px) {
+    .sign-up-container {
+        width: 80%;
+        margin: 50px auto;
+    }
+}
+@media (max-width: 650px) {
+    .sign-up-container {
+        width: 100%;
+        button {
+            margin: auto;
+        }
+    }
+}

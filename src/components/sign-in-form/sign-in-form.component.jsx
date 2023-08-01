@@ -63,7 +63,7 @@ function SignInForm() {
           alert("Network Error! Please check you internet connection.");
           break;
         default:
-          console.log(err);
+          console.error(err);
       }
     }
   };
