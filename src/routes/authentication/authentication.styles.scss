@@ -3,7 +3,13 @@
     max-width: 1000px;
     padding: 50px;
     margin: 50px auto;
-    justify-content: space-evenly;
+    justify-content: space-between;
     gap: 30px;
     flex-wrap: wrap;
+}
+
+@media (max-width: 650px) {
+    .authentication-container {
+        padding: 50px 0;
+    }
 }

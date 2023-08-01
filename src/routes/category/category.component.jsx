@@ -18,7 +18,7 @@ const Category = () => {
 
   return (
     <Fragment>
-      <h2>{category.toLocaleUpperCase()}</h2>
+      <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
       <div className="products-container">
         {products &&
           products.map((product) => (
