@@ -8,6 +8,8 @@ import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
 
+//NOTE: this is the redux native branch
+
 import { setCurrentUser } from "./store/user/user.action";
 import {
   onAuthStateChangedListner,
