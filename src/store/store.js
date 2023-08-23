@@ -1,4 +1,4 @@
-//NOTE: need to Changed
+//NOTE: need to Change
 import {
   compose,
   applyMiddleware,
@@ -15,15 +15,16 @@ const persistConfig = {
   blacklist: ["user"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
-const middleWares = [
-  process.env.NODE_ENV === "development" && loggerMiddleware,
-].filter(Boolean);
-const composedEnhancers = compose(applyMiddleware(...middleWares));
-export const store = createStore(
-  persistedReducer,
-  undefined,
-  composedEnhancers
-);
-export const persistor = persistStore(store);
+// const middleWares = [
+//   process.env.NODE_ENV === "development" && loggerMiddleware,
+// ].filter(Boolean);
+// const composedEnhancers = compose(applyMiddleware(...middleWares));
+// export const store = createStore(
+//   persistedReducer,
+//   undefined,
+//   composedEnhancers
+// );
 
-// export const store = createStore(persistedReducer);
+export const store = createStore(persistedReducer);
+
+export const persistor = persistStore(store);

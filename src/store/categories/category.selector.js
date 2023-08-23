@@ -21,7 +21,7 @@ export const selectCategories1 = createSelector(
 //   }, {});
 // };
 
-export const selectCatgories = createSelector(
+export const selectCategories = createSelector(
   [selectCategories1],
   (categories) => {
     return categories.reduce((acc, category) => {
