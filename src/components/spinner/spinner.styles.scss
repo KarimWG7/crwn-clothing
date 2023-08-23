@@ -1,0 +1,17 @@
+.spinner{
+    width: 36px;
+    aspect-ratio: 1;
+    background-color: transparent;
+    border-radius: 50%;
+    border: solid #bbb 3px;
+    border-top-color: transparent;
+    animation: 0.3s spinner linear;
+}
+@keyframes spinner { 
+    from {
+        transform: rotate(0deg); 
+    }
+    to {
+        transform:rotate(-360deg);
+    }
+}

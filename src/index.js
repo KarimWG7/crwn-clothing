@@ -3,20 +3,24 @@ import ReactDOM from 'react-dom/client';
 
 import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
-import { store } from "./store/store";
+import { store, persistor } from "./store/store";
+import { PersistGate } from "redux-persist/integration/react";
 
 import App from "./App";
 
 import "./index.scss";
+import Spinner from "./components/spinner/spinner.component";
 
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-    <BrowserRouter>
-      <Provider store={store}>
+    <Provider store={store}>
+      <PersistGate loading={<Spinner />} persistor={persistor}>
+        <BrowserRouter>
           <App />
-      </Provider>
-    </BrowserRouter>
+        </BrowserRouter>
+      </PersistGate>
+    </Provider>
   </React.StrictMode>
 );
 
