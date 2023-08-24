@@ -21,7 +21,7 @@ export const selectCategories1 = createSelector(
 //   }, {});
 // };
 
-export const selectCatgories = createSelector(
+export const selectCategories = createSelector(
   [selectCategories1],
   (categories) => {
     return categories.reduce((acc, category) => {
@@ -32,7 +32,7 @@ export const selectCatgories = createSelector(
   }
 );
 // export const selectCatgoriesMap = (state) => state.categories.categories;
-export const selectCatgoriesMap = createSelector(
+export const selectCategoriesMap = createSelector(
   [selectCategories1],
   (categories) => categories
 );
