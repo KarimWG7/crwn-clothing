@@ -5,7 +5,7 @@ import {
   addItemToCart,
   removeItemFromCart,
   clearItemFromCart,
-} from "../../store/cart/cart.action";
+} from "../../store/cart/cart.reducer";
 import { selectCartItems } from "../../store/cart/cart.selector";
 
 import "./checkout-item.styles.scss";
@@ -15,10 +15,9 @@ const CheckoutItem = ({ cartItem }) => {
   const { id, name, quantity, imageUrl, price } = cartItem;
   const cartItems = useSelector(selectCartItems);
 
-  const clearItemHandler = () => dispatch(clearItemFromCart(cartItems, id));
-  const removeItemHandler = () =>
-    dispatch(removeItemFromCart(cartItems, cartItem));
-  const addItemHandler = () => dispatch(addItemToCart(cartItems, cartItem));
+  const clearItemHandler = () => dispatch(clearItemFromCart(id));
+  const removeItemHandler = () => dispatch(removeItemFromCart(cartItem));
+  const addItemHandler = () => dispatch(addItemToCart(cartItem));
 
   return (
     <div key={id} className="checkout-item-container">

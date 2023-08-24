@@ -6,7 +6,7 @@ import { useSelector } from "react-redux";
 import ProductCard from "../../components/product-card/product-card.component";
 import {
   selectCategories,
-  selectCatgoriesMap,
+  selectCategoriesMap,
 } from "../../store/categories/category.selector";
 
 import "./category.styles.scss";
@@ -14,8 +14,8 @@ import "./category.styles.scss";
 const Category = () => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
-  // const categoriesMap = useSelector(selectCatgoriesMap);
-  const categoriesMap = useSelector(selectCategories);
+  const categoriesMap = useSelector(selectCategoriesMap);
+  // const categoriesMap = useSelector(selectCategories);
 
   useEffect(() => {
     const productsArr = categoriesMap[category];
