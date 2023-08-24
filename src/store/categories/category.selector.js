@@ -32,7 +32,7 @@ export const selectCategories = createSelector(
   }
 );
 // export const selectCatgoriesMap = (state) => state.categories.categories;
-export const selectCatgoriesMap = createSelector(
+export const selectCategoriesMap = createSelector(
   [selectCategories1],
   (categories) => categories
 );

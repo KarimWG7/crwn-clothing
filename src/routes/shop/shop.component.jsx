@@ -1,4 +1,4 @@
-//NOTE: need to Changed
+//NOTE: need to Change
 import { useEffect } from "react";
 import { Routes, Route } from "react-router-dom";
 import { useDispatch } from "react-redux";
@@ -7,7 +7,7 @@ import CategoriesPreview from "../categories-preview/categories-preview.componen
 import Category from "../category/category.component";
 // import SHOP_DATA from "../../shop-data";
 
-import { setCategories } from "../../store/categories/category.action";
+import { setCategories } from "../../store/categories/category.reducer";
 import { getCategoriesAndDocuments } from "../../utils/firebase/firebase.utils";
 
 const Shop = () => {
