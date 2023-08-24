@@ -22,17 +22,19 @@ const Category = ({isLoading}) => {
     const productsArr = categoriesMap[category];
     setProducts(productsArr);
   }, [categoriesMap, category]);
-  return isLoading ? (
-    <Spinner />
-  ) : (
+  return (
     <Fragment>
       <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
-      <div className="products-container">
-        {products &&
-          products.map((product) => (
-            <ProductCard key={product.id} product={product} />
-          ))}
-      </div>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        <div className="products-container">
+          {products &&
+            products.map((product) => (
+              <ProductCard key={product.id} product={product} />
+            ))}
+        </div>
+      )}
     </Fragment>
   );
   
