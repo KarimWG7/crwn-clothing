@@ -10,8 +10,9 @@ import {
 } from "../../store/categories/category.selector";
 
 import "./category.styles.scss";
+import Spinner from "../../components/spinner/spinner.component";
 
-const Category = () => {
+const Category = ({isLoading}) => {
   const { category } = useParams();
   const [products, setProducts] = useState([]);
   // const categoriesMap = useSelector(selectCatgoriesMap);
@@ -21,7 +22,9 @@ const Category = () => {
     const productsArr = categoriesMap[category];
     setProducts(productsArr);
   }, [categoriesMap, category]);
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       <h2 className="category-title">{category.toLocaleUpperCase()}</h2>
       <div className="products-container">
@@ -32,6 +35,7 @@ const Category = () => {
       </div>
     </Fragment>
   );
+  
 };
 
 export default Category;

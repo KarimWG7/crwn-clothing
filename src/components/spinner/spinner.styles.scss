@@ -1,13 +1,19 @@
-.spinner{
-    width: 36px;
-    aspect-ratio: 1;
-    background-color: transparent;
-    border-radius: 50%;
-    border: solid #bbb 3px;
-    border-top-color: transparent;
-    animation: 0.3s spinner linear;
+.spinner-container {
+position:absolute;
+top: 30%;
+left: 50%;
+transform: translate(50%, 50%);
+    .spinner{
+        width: 36px;
+        aspect-ratio: 1;
+        background-color: transparent;
+        border-radius: 50%;
+        border: solid #bbb 3px;
+        border-top-color: transparent;
+        animation: 1s spinner linear infinite;
+    }
 }
-@keyframes spinner { 
+    @keyframes spinner { 
     from {
         transform: rotate(0deg); 
     }

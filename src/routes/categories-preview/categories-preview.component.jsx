@@ -8,11 +8,14 @@ import {
   selectCategories,
   selectCategoriesMap,
 } from "../../store/categories/category.selector";
+import Spinner from "../../components/spinner/spinner.component";
 
-const CategoriesPreview = () => {
+const CategoriesPreview = ({ isLoading }) => {
   // const categoriesMap = useSelector(selectCatgoriesMap);
   const categoriesMap = useSelector(selectCategories);
-  return (
+  return isLoading ? (
+    <Spinner />
+  ) : (
     <Fragment>
       {Object.keys(categoriesMap).map((title) => {
         const products = categoriesMap[title];
