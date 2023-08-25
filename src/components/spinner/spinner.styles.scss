@@ -5,7 +5,8 @@
     border-radius: 50%;
     border: solid #bbb 3px;
     border-top-color: transparent;
-    animation: 0.3s spinner linear;
+    animation: 0.5s spinner linear infinite;
+    margin-top: 5px;
 }
 @keyframes spinner { 
     from {
