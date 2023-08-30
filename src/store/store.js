@@ -1,4 +1,3 @@
-//NOTE: need to Change
 import {
   compose,
   applyMiddleware,
@@ -13,12 +12,12 @@ import thunk from "redux-thunk";
 const persistConfig = {
   key: "root",
   storage,
-  blacklist: ["user"],
+  whitelist: ["cart"],
 };
 const persistedReducer = persistReducer(persistConfig, rootReducer);
 const middleWares = [
   process.env.NODE_ENV === "development" && loggerMiddleware,
-  thunk
+  thunk,
 ].filter(Boolean);
 const composedEnhancers = compose(applyMiddleware(...middleWares));
 export const store = createStore(
@@ -30,3 +29,20 @@ export const store = createStore(
 // export const store = createStore(persistedReducer);
 
 export const persistor = persistStore(store);
+
+// NOTE: all the middlewares in redux are structured in that way
+/* 
+const middleware = (store) => (next) => (action) => {
+  // some logic
+}
+const middleware = (store) => {
+  return (next) => {
+    return (action) =>{
+
+    }
+  }
+}
+ - so it's a function which has a parameter of store that have a function which have a parameter of next thet have a funvtion which have an action parameter
+ - it's a functions that returns a function that return a function
+
+*/

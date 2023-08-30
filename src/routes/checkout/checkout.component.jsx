@@ -11,7 +11,7 @@ function Checkout() {
   const cartItems = useSelector(selectCartItems)
 
   return (
-    <div className="checkout-container">
+    <section className="checkout-container">
       <div className="checkout-header">
         <div className="header-block">
           <span>Product</span>
@@ -34,7 +34,7 @@ function Checkout() {
         <CheckoutItem key={cartItem.id} cartItem={cartItem} />
       ))}
       <span className="total">Total:- ${cartTotal}</span>
-    </div>
+    </section>
   );
 }
 

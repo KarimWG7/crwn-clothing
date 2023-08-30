@@ -1,0 +1,19 @@
+{
+	"geolocation": {
+		"data": {
+			"city": "Tanta",
+			"country": {
+				"code": "EG",
+				"name": "Egypt"
+			},
+			"subdivision": {
+				"code": "GH",
+				"name": "Gharbia"
+			},
+			"timezone": "Africa/Cairo",
+			"latitude": 30.7866,
+			"longitude": 31.0004
+		},
+		"timestamp": 1692979012017
+	}
+}

@@ -6,21 +6,28 @@ import CategoryPreview from "../../components/category-preview/category-preview.
 
 import {
   selectCategories,
+  selectCategoriesIsLoading,
   selectCategoriesMap,
 } from "../../store/categories/category.selector";
+import Spinner from "../../components/spinner/spinner.component";
 
 const CategoriesPreview = () => {
-  // const categoriesMap = useSelector(selectCatgoriesMap);
-  const categoriesMap = useSelector(selectCategories);
+  const isLoading = useSelector(selectCategoriesIsLoading);
+  const categoriesMap = useSelector(selectCategoriesMap);
+  // const categoriesMap = useSelector(selectCategories);
   return (
-    <Fragment>
-      {Object.keys(categoriesMap).map((title) => {
-        const products = categoriesMap[title];
-        return (
-          <CategoryPreview key={title} title={title} products={products} />
-        );
-      })}
-    </Fragment>
+    <main>
+      {isLoading ? (
+        <Spinner />
+      ) : (
+        Object.keys(categoriesMap).map((title) => {
+          const products = categoriesMap[title];
+          return (
+            <CategoryPreview key={title} title={title} products={products} />
+          );
+        })
+      )}
+    </main>
   );
 };
 
