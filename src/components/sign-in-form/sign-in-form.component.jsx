@@ -1,14 +1,14 @@
 import React, { useState } from "react";
+import { useDispatch } from "react-redux";
 
 import FormInput from "../../components/form-input/form-input.component";
 import Button from "../../components/button/button.component";
 
-import {
-  signInWithGooglePopup,
-  signInWithGoogleEmailAndPassword as signInWithEmailAndPassword,
-} from "../../utils/firebase/firebase.utils";
-
 import "./sign-in-form.styles.scss";
+import {
+  emailSignInStart,
+  googleSignInStart,
+} from "../../store/user/user.action";
 
 const defaultFormFeilds = {
   email: "",
@@ -16,6 +16,7 @@ const defaultFormFeilds = {
 };
 
 function SignInForm() {
+  const dispatch = useDispatch();
   const [formFeilds, setFormFeilds] = useState(defaultFormFeilds);
   const { email, password } = formFeilds;
 
@@ -32,24 +33,14 @@ function SignInForm() {
 
   //managing signing in with google
   const signInWithGoogle = async () => {
-    try {
-      await signInWithGooglePopup();
-    } catch (err) {
-      if (err.code === "auth/cancelled-popup-request") {
-        alert("You Closed The Sign In Popup Without Signing In!");
-      } else if (err.code === "auth/network-request-failed") {
-        alert("Network Error! Please check you internet connection.");
-      } else {
-        console.error("Error while logging in", err);
-      }
-    }
+    dispatch(googleSignInStart());
   };
 
   // managing signing with email and password
   const handleSubmit = async (e) => {
     e.preventDefault();
     try {
-      await signInWithEmailAndPassword(email, password);
+      dispatch(emailSignInStart(email, password));
       resetFormFeilds();
     } catch (err) {
       switch (err.code) {

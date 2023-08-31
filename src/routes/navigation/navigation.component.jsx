@@ -11,16 +11,18 @@ import { selectIsCartOpen} from "../../store/cart/cart.selector"
 import { selectCurrentUser } from "../../store/user/user.selector";
 
 import { ReactComponent as CrwnSVG } from "../../assets/crown.svg";
-import { signOutUser } from "../../utils/firebase/firebase.utils";
 
 import "./navigation.styles.scss";
+import { useDispatch } from "react-redux";
+import { signOutStart } from "../../store/user/user.action";
 
 const Navigation = () => {
+  const dispatch = useDispatch();
   const currentUser = useSelector(selectCurrentUser);
-  const isCartOpen = useSelector(selectIsCartOpen)
+  const isCartOpen = useSelector(selectIsCartOpen);
 
-  const signOutHandler = async () => {
-    await signOutUser();
+  const signOutHandler = () => {
+    dispatch(signOutStart());
   };
 
   return (

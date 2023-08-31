@@ -9,6 +9,8 @@ import FormInput from "../form-input/form-input.component";
 import Button from "../button/button.component";
 
 import "./sign-up-form.styles.scss";
+import { useDispatch } from "react-redux";
+import { signUpStart } from "../../store/user/user.action";
 
 const defaultFormFeilds = {
   displayName: "",
@@ -20,7 +22,7 @@ const defaultFormFeilds = {
 function SignUpForm() {
   const [formFeilds, setFormFeilds] = useState(defaultFormFeilds);
   const { displayName, email, password, confirmPassword } = formFeilds;
-
+  const dispatch = useDispatch();
 
   const resetFormFeilds = () => {
     setFormFeilds(defaultFormFeilds);
@@ -38,14 +40,7 @@ function SignUpForm() {
       return;
     }
     try {
-      const { user } = await createAuthUserWithEmailAndPassword(
-        email,
-        password
-      );
-      //create user document in firestore database using firebase utils function
-      const userDocRef = await createUserDocumentFromAuth(user, {
-        displayName,
-      });
+      dispatch(signUpStart(email, password, displayName));
       resetFormFeilds();
     } catch (err) {
       console.error(err.message);

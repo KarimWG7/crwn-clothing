@@ -1,11 +1,9 @@
-//NOTE: need to Change
-import React, { Fragment, useEffect, useState } from "react";
+import React, {  useEffect, useState } from "react";
 import { useParams } from "react-router-dom";
 import { useSelector } from "react-redux";
 
 import ProductCard from "../../components/product-card/product-card.component";
 import {
-  selectCategories,
   selectCategoriesMap,
   selectCategoriesIsLoading,
 } from "../../store/categories/category.selector";
@@ -18,7 +16,6 @@ const Category = () => {
   const [products, setProducts] = useState([]);
   const isLoading = useSelector(selectCategoriesIsLoading);
   const categoriesMap = useSelector(selectCategoriesMap);
-  // const categoriesMap = useSelector(selectCategories);
 
   useEffect(() => {
     setProducts(categoriesMap[category]);

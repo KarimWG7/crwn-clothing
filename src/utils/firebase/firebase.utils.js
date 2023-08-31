@@ -64,7 +64,6 @@ export const getCategoriesAndDocuments = async () => {
   return querySnapshot.docs.map((docSnapShot) => docSnapShot.data());
 };
 
-
 export const createUserDocumentFromAuth = async (userAuth, additional) => {
   if (!userAuth) return;
 
@@ -102,7 +101,7 @@ export const createAuthUserWithEmailAndPassword = async (email, password) => {
   const user = await createUserWithEmailAndPassword(auth, email, password);
   return user;
 };
-export const signInWithGoogleEmailAndPassword = async (email, password) => {
+export const signInAuthUserWithEmailAndPassword = async (email, password) => {
   if (!email || !password) return;
   return await signInWithEmailAndPassword(auth, email, password);
 };
@@ -113,3 +112,16 @@ export const signOutUser = async () => {
 
 export const onAuthStateChangedListner = async (callback) =>
   onAuthStateChanged(auth, callback);
+
+export const getCurrentUser = () => {
+  return new Promise((resolve, reject) => {
+    const unsubscribe = onAuthStateChanged(
+      auth,
+      (userAuth) => {
+        unsubscribe();
+        resolve(userAuth);
+      },
+      reject
+    );
+  });
+};

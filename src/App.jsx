@@ -7,24 +7,14 @@ import Navigation from "./routes/navigation/navigation.component";
 import Authentication from "./routes/authentication/authentication.component";
 import Shop from "./routes/shop/shop.component";
 import Checkout from "./routes/checkout/checkout.component";
+import { checkUserSession } from "./store/user/user.action";
 
 //NOTE: this is the redux native branch
-
-import { setCurrentUser } from "./store/user/user.action";
-import {
-  onAuthStateChangedListner,
-  createUserDocumentFromAuth,
-} from "./utils/firebase/firebase.utils";
 
 function App() {
   const dispatch = useDispatch();
   useEffect(() => {
-    onAuthStateChangedListner(async (user) => {
-      if (user) {
-        createUserDocumentFromAuth(user);
-      }
-      dispatch(setCurrentUser(user));
-    });
+    dispatch(checkUserSession());
   }, []);
 
   return (
